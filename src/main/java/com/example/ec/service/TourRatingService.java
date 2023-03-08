@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.OptionalDouble;
@@ -18,6 +19,7 @@ import java.util.OptionalDouble;
  *
  * Created by Mary Ellen Bowman.
  */
+@Transactional
 @Service
 public class TourRatingService {
     private TourRatingRepository tourRatingRepository;
@@ -129,6 +131,7 @@ public class TourRatingService {
      * @param score
      * @param customers
      */
+
     public void rateMany(int tourId,  int score, Integer [] customers) {
         tourRepository.findById(tourId).ifPresent(tour -> {
             for (Integer c : customers) {
