@@ -8,11 +8,9 @@ import java.util.Objects;
  *
  * Created by Mary Ellen Bowman
  */
-
-@Table(name="tour_rating")
 @Entity
+@Table(name="tour_rating")
 public class TourRating {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -29,6 +27,9 @@ public class TourRating {
 
     @Column
     private String comment;
+
+    protected TourRating() {
+    }
 
     /**
      * Create a fully initialized TourRating.
@@ -59,9 +60,6 @@ public class TourRating {
         this.comment = toComment(score);
     }
 
-    protected TourRating() {
-    }
-
     /**
      * Auto Generate a message for a score.
      *
@@ -77,6 +75,10 @@ public class TourRating {
             case 5:return "Great";
             default: return score.toString();
         }
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public Integer getScore() {
