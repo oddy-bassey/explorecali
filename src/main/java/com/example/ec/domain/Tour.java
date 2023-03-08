@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity
 public class Tour implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
@@ -38,9 +38,11 @@ public class Tour implements Serializable{
 
 
     @ManyToOne
+    @JoinColumn(name="tour_package_code")
     private TourPackage tourPackage;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
     @Column
